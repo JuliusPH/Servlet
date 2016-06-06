@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net"
+	      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	      xsi:schemaLocation="http://dozer.sourceforge.net http://dozer.sourceforge.net/schema/beanmapping.xsd">         
+  <mapping>
+    <class-a>com.exist.model.Person</class-a>
+    <class-b>com.exist.dto.PersonDto</class-b>
+  </mapping>
+  <mapping>
+    <class-a>com.exist.model.Address</class-a>
+    <class-b>com.exist.dto.AddressDto</class-b>
+  </mapping>
+  <mapping>
+    <class-a>com.exist.model.Contact</class-a>
+    <class-b>com.exist.dto.ContactDto</class-b>
+  </mapping>
+  <mapping>
+    <class-a>com.exist.model.Role</class-a>
+    <class-b>com.exist.dto.RoleDto</class-b>
+  </mapping>
+</mappings>
