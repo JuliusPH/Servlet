@@ -1,0 +1,99 @@
+.wrapper{
+    width: auto;
+    max-width: 90%;
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 250px;
+}
+
+.ui.horizontal.label, .ui.horizontal.labels .label{
+    min-width: 80px !important;
+}
+
+.form-container{
+    max-width: 700px;
+    margin: auto;
+}
+
+.wrapper .ui.top.menu{
+    background-color: #f9fafb;
+}
+
+.wrapper .ui.top.menu span.text{
+    margin-left: 10px;
+}
+
+.wrapper .segment{
+    padding: 0 !important;
+}
+
+.wrapper .segment table{
+    border: 0 !important;
+}
+
+.wrapper .segment thead th{
+    background-color: white !important;
+}
+
+.wrapper .segment tfoot th{
+    background-color: #f9fafb !important;
+}
+
+.ui.selection.dropdown{
+    min-width: 0 !important;
+}
+
+.ui.error.message{
+    display: block!important;
+}
+
+.add.modal .content, .delete.modal .content, .update.modal .content, .contacts.modal .content{
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+}
+
+.delete.modal.content p{
+    margin-top: 10px;
+}
+
+.ui.form{
+    margin-bottom: 0 !important;
+}
+
+.ui.form .actions {
+    width: calc(100% + 3rem);
+    margin-top: 15px;
+    margin-left: -1.5rem;
+    text-align: right;
+    background: #f9fafb;
+    padding: 1rem;
+    border-top: 1px solid rgba(34,36,38,.15);
+}
+
+.ui.modal > .close{
+    top: 0.85rem !important;
+    right: 0.6rem !important;
+    color: #db2828 !important;
+}
+
+.result{
+    margin-bottom: 20px;
+}
+
+.ui.modal.update{
+    z-index: 10000;
+}
+
+.ui.modal.person{
+    z-index: 1;
+}
+
+.ui.contacts.modal .toggle{
+    padding-top: 8px !important;
+}
+
+.sort-link i{
+    display: inline !important;
+    padding-left: 5px !important;
+}

@@ -18,16 +18,16 @@
       <artifactId>core-service</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.apache.commons</groupId>
-      <artifactId>commons-lang3</artifactId>
-    </dependency>
-    <dependency>
       <groupId>commons-validator</groupId>
       <artifactId>commons-validator</artifactId>
     </dependency>
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet.jsp.jstl</groupId>
+      <artifactId>javax.servlet.jsp.jstl-api</artifactId>
     </dependency>
   </dependencies>
 
@@ -49,7 +49,7 @@
             <phase>install</phase>
             <configuration>
               <webApp>
-                <contextPath>/hello</contextPath>
+                <contextPath>/servletapp</contextPath>
               </webApp>
             </configuration>
           </execution>

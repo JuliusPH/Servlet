@@ -1,9 +1,16 @@
 package com.exist.dto;
 
 import com.exist.model.Name;
+import com.exist.model.enums.ContactType;
 import com.exist.model.enums.Gender;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
+import org.apache.commons.lang3.StringUtils;
 
 public class PersonDto extends BaseEntityDto{
     private Name name;
@@ -101,5 +108,55 @@ public class PersonDto extends BaseEntityDto{
     
     public void setRoles(Set<RoleDto> roles){
         this.roles = roles;
+    }
+    
+    public String getFullName(){
+        return name.getFirstName() + " " + name.getMiddleName() + " " + name.getLastName();
+    }
+    
+    public String getFullAddress(){
+        return address.getStreetNumber() + " " + address.getBarangay() + ", " + address.getCity() + " " + address.getZipCode();
+    }
+    
+    public String getFormattedBirthday(){
+        return (new SimpleDateFormat("MMMMM dd, yyyy").format(birthday));
+    }
+    
+    public String getEmployment(){
+        return (isEmployed ? "Employed, " + new SimpleDateFormat("MMMMM dd, yyyy").format(dateHired) : "Not employed");
+    }
+    
+    public String getAllContacts(){
+        Set<String> contactValueSet = contacts.stream().map(c -> c.getValue()).collect(Collectors.toCollection(HashSet::new));
+        return (contactValueSet.size() > 0 ? StringUtils.join(contactValueSet, ", ") : "None");
+    }
+    
+    public String getAllRoles(){
+        Set<String> roleValueSet = roles.stream().map(r -> r.getValue()).collect(Collectors.toCollection(HashSet::new));
+        return (roleValueSet.size() > 0 ? StringUtils.join(roleValueSet, ", ")  : "None");
+    }
+    
+    public ContactDto getEmail(){
+        List<ContactDto> emailList = contacts.stream().filter(contact -> contact.getContactType() == ContactType.Email).collect(Collectors.toList());
+        if(emailList.size() > 0){
+            return emailList.get(0);
+        }
+        return null;
+    }
+    
+    public ContactDto getMobile(){
+        List<ContactDto> mobileList = contacts.stream().filter(contact -> contact.getContactType() == ContactType.Mobile).collect(Collectors.toList());
+        if(mobileList.size() > 0){
+            return mobileList.get(0);
+        }
+        return null;
+    }
+    
+    public ContactDto getLandline(){
+        List<ContactDto> landlineList = contacts.stream().filter(contact -> contact.getContactType() == ContactType.Landline).collect(Collectors.toList());
+        if(landlineList.size() > 0){
+            return landlineList.get(0);
+        }
+        return null;
     }
 }
