@@ -9,8 +9,8 @@
         <script src="${pageContext.request.contextPath}/js/semantic.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/functions.js"></script>
         <script type="text/javascript">
-            $(document).live(function(){
-                
+            $(document).ready(function(){
+                activateSortDropdowns();
                 $(".person.modal")
                     .modal({
                         closable: false,
@@ -19,6 +19,7 @@
                             $(".delete.modal").empty();
                             $(".update.modal").empty();
                             $(".contacts.modal").empty();
+                            activateSortDropdowns();
                         }
                     })
                 ;
@@ -28,6 +29,7 @@
                         closable: false,
                         onDeny : function() {
                             $(".person.modal").modal("show");
+                            activateSortDropdowns();
                         }
                     })
                 ;
@@ -37,8 +39,10 @@
                         closable: false,
                         onDeny : function() {
                             $(".person.modal").modal("show");
+                            activateSortDropdowns();
                         },
                         onApprove : function() {
+                            activateSortDropdowns();
                             return false;
                         }
                     })
@@ -49,8 +53,10 @@
                         closable: false,
                         onDeny : function() {
                             $(".person.modal").modal("show");
+                            activateSortDropdowns();
                         },
                         onApprove : function() {
+                            activateSortDropdowns();
                             return false;
                         }
                     })
@@ -61,6 +67,7 @@
                         closable: false,
                         onHide : function(){
                             $(".add.modal").empty();
+                            activateSortDropdowns();
                         }
                     })
                 ;
@@ -102,6 +109,7 @@
                         $(".result").html($(data).find("data-message").html());
                         $(".wrapper .segment .content").html($(data).find("data-list").html());
                         $(".add.modal").modal("hide");
+                        initSortDropdowns();
                     });
                     e.preventDefault();
                 });
@@ -114,6 +122,7 @@
                         $(".update.modal").empty();
                         $(".person.modal").modal("hide");
                         $(".person.modal").empty();
+                        initSortDropdowns();
                     });
                     e.preventDefault();
                 });
@@ -126,6 +135,7 @@
                         $(".contacts.modal").empty();
                         $(".person.modal").modal("hide");
                         $(".person.modal").empty();
+                        initSortDropdowns();
                     });
                     e.preventDefault();
                 });
@@ -138,6 +148,7 @@
                         $(".person.modal").empty();
                         $(".delete.modal").modal("hide"); 
                         $(".person.modal").modal("hide");
+                        initSortDropdowns();
                     });
                     e.preventDefault();
                 });
@@ -147,25 +158,6 @@
                         .closest('.message')
                         .transition('fade')
                     ;
-                });
-                
-                $(".ui.dropdown.sort").dropdown({
-                    onChange: function(sort){
-                        alert(sort);
-                        var order = $(".ui.dropdown.order").dropdown("get value");
-                        $.get("", {sort : sort, order : order}, function(data){
-                            $(".wrapper .segment .content").html($(data).find("data-list").html());
-                        });
-                    }
-                });
-                
-                $(".ui.dropdown.order").dropdown({
-                    onChange: function(order){
-                        var sort = $(".ui.dropdown.sort").dropdown("get value");
-                        $.get("", {sort : sort, order : order}, function(data){
-                            $(".wrapper .segment .content").html($(data).find("data-list").html());
-                        });
-                    }
                 });
             });
         </script>

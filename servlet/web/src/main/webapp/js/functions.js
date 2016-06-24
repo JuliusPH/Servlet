@@ -1,3 +1,28 @@
+function initSortDropdowns(){
+    $(".ui.dropdown.sort").dropdown("set selected", "id");
+    $(".ui.dropdown.order").dropdown("set selected", "ascending");
+}
+
+function activateSortDropdowns(){
+    $(".ui.dropdown.sort").dropdown({
+        onChange: function(sort){
+            var order = $(".ui.dropdown.order").dropdown("get value");
+            $.get("", {sort : sort, order : order}, function(data){
+                $(".wrapper .segment .content").html($(data).find("data-list").html());
+            });
+        }
+    });
+
+    $(".ui.dropdown.order").dropdown({
+        onChange: function(order){
+            var sort = $(".ui.dropdown.sort").dropdown("get value");
+            $.get("", {sort : sort, order : order}, function(data){
+                $(".wrapper .segment .content").html($(data).find("data-list").html());
+            });
+        }
+    });
+}
+
 function prepareForm(){
     $(".ui.dropdown").dropdown();
     
